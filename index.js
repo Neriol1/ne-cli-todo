@@ -1,11 +1,11 @@
-const db = require("./db")
+const db = require('./db')
 
-module.exports.add = async (title)=>{
+module.exports.add = async title => {
   const list = await db.read()
-  list.push({title,done:false})
+  list.push({ title, done: false })
   await db.write(list)
 }
 
-module.exports.clear = async ()=>{
+module.exports.clear = async () => {
   await db.write([])
 }
