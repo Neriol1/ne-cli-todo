@@ -9,3 +9,7 @@ module.exports.add = async title => {
 module.exports.clear = async () => {
   await db.write([])
 }
+
+module.exports.showAll = async () => {
+  console.log('show all');
+}

@@ -1,15 +1,14 @@
+#!/usr/bin/env node
 const { program } = require('commander')
 const api = require('.')
 const pkg = require('./package.json')
-
-program.option('-x, --xxx', 'what the x')
 
 program.version(pkg.version)
 
 program
   .command('add')
   .description('add a task')
-  .action((_, options) => {
+  .action((name, options, command) => {
     const keys = options.args
     api.add(keys[0])
   })
@@ -21,6 +20,8 @@ program
     api.clear()
   })
 
-program.parse(process.argv)
-
-console.log(process.argv)
+if (process.argv.length === 2) {
+  void api.showAll()
+} else {
+  program.parse(process.argv)
+}
