@@ -1,7 +1,10 @@
-const homedir = require('os').homedir()
+import os from 'os'
+import path from 'path'
+import fs from 'fs'
+const homedir = os.homedir()
 const home = process.env.HOME || homedir
-const path = require('path')
-const fs = require('fs')
+
+
 const dbPath = path.join(home, '.todo')
 const db = {
   read(path = dbPath) {
@@ -33,4 +36,4 @@ const db = {
   },
 }
 
-module.exports = db
+export default db

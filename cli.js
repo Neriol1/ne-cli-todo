@@ -1,7 +1,12 @@
 #!/usr/bin/env node
-const { program } = require('commander')
-const api = require('.')
-const pkg = require('./package.json')
+import { program } from 'commander'
+import * as api from './index.js'
+import { readFile } from 'fs/promises';
+const pkg = JSON.parse(
+  await readFile(
+    new URL('./package.json', import.meta.url)
+  )
+);
 
 program.version(pkg.version)
 
