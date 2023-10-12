@@ -1,15 +1,21 @@
 {
-  "name": "node-todo",
+  "name": "ne-cli-todo",
   "version": "0.0.1",
-  "description": "",
+  "description": "a cli todo",
   "main": "index.js",
   "type": "module",
+  "files": [
+    "*.js"
+  ],
+  "bin": {
+    "nt": "cli.js"
+  },
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "neriol1",
+  "license": "MIT",
   "devDependencies": {
     "call-bind": "1.0.2",
     "cross-env": "7.0.3",
