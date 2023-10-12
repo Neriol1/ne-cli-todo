@@ -16,10 +16,10 @@ const defaultOptions = [
 ]
 const actions = [
   { name: 'mark as done  ✔', value: 'markAsDone' },
-  { name: 'mark as undone   🔘', value: 'markAsUndone' },
-  { name: 'update this title   🛠', value: 'updateTitle' },
-  { name: 'remove  ⚡', value: 'remove' },
-  { name: 'exit   👋', value: 'exit' },
+  { name: 'mark as undone  🔘', value: 'markAsUndone' },
+  { name: 'update this title  🛠', value: 'updateTitle' },
+  { name: 'remove  ⚠', value: 'remove' },
+  { name: 'exit  👋', value: 'exit' },
 ]
 
 const showTasks = async (list) => {
@@ -34,8 +34,9 @@ const showTasks = async (list) => {
   return inquirer.prompt({
     type: 'list',
     name: 'index',
-    message: 'choose a task',
+    message: 'welcome to ne-cli-todo, choose a task to continue',
     choices: choices,
+    prefix: '🔉'
   })
 }
 const markAsDone = async (list, index) => {
@@ -52,6 +53,7 @@ const updateTitle = async (list, index) => {
     name: 'title',
     message: 'enter a new title',
     default: list[index].title,
+    prefix: '🐞'
   })
   list[index].title = title
   await db.write(list)
@@ -71,6 +73,7 @@ const action = async (list, index) => {
       name: 'action',
       message: 'choose an action',
       choices: actions,
+      prefix: '📌'
     })
     handleAction(action, list, index)
   } else if (index === '-2') {
@@ -79,6 +82,7 @@ const action = async (list, index) => {
         type: 'input',
         name: 'title',
         message: 'enter a new title',
+        prefix: '🐞'
       })
       list.push({ title, done: false })
     db.write(list)
